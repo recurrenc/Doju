@@ -3,6 +3,9 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Entypo';
+import RecentAdded from './RecentAdded';
+import AllRecord from './AllRecord';
+import AddRecord from './AddRecord';
 
 const Tab = createBottomTabNavigator();
 
@@ -13,7 +16,6 @@ const BottomNavigator = () => {
         screenOptions={({route}) => ({
           headerShown: false,
           tabBarIcon: ({focused, color, size}) => {
-            console.log('Route ' + route.name);
             let iconName;
             switch (route.name) {
               case 'Recent':
@@ -34,31 +36,9 @@ const BottomNavigator = () => {
         })}>
         <Tab.Screen name="Recent" component={RecentAdded} />
         <Tab.Screen name="All Record" component={AllRecord} />
-        <Tab.Screen name="Add Record" component={AddNew} />
+        <Tab.Screen name="Add Record" component={AddRecord} />
       </Tab.Navigator>
     </NavigationContainer>
-  );
-};
-
-const RecentAdded = () => {
-  return (
-    <View>
-      <Text>One</Text>
-    </View>
-  );
-};
-const AllRecord = () => {
-  return (
-    <View>
-      <Text>AllRecord</Text>
-    </View>
-  );
-};
-const AddNew = () => {
-  return (
-    <View>
-      <Text>AddNew</Text>
-    </View>
   );
 };
 
