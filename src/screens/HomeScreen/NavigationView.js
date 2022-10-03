@@ -24,7 +24,6 @@ const NavigationView = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
     justifyContent: 'space-between',
   },
   user: {
@@ -35,19 +34,23 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
   username: {
-    fontSize: 18,
+    marginTop: 10,
+    fontSize: 22,
     fontWeight: 'bold',
-    color: '#444',
+    color: '#fff',
   },
   email: {
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: 'normal',
-    color: 'gray',
+    color: '#6a7ead',
   },
   headerContainer: {
-    backgroundColor: '#dec076',
+    padding: 16,
+    backgroundColor: '#0c152b',
   },
-  buttonView: {},
+  buttonView: {
+    padding: 16,
+  },
 });
 
 export default NavigationView;
