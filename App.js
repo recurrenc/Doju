@@ -22,8 +22,8 @@ const App = () => {
 
   return (
     <SafeAreaView style={[styles.root, backgroundStyle]}>
-      {/* <Navigation /> */}
-      <HomeScreen />
+      <Navigation />
+      {/* <HomeScreen /> */}
     </SafeAreaView>
   );
 };
