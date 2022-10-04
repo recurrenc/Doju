@@ -1,5 +1,5 @@
 import {View, Text, StyleSheet, ScrollView} from 'react-native';
-import React, {useState} from 'react';
+import React from 'react';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 import {useNavigation} from '@react-navigation/native';
@@ -24,13 +24,13 @@ const NewPasswordScreen = () => {
       <View style={styles.root}>
         <Text style={styles.title}>Set New Password</Text>
         <CustomInput
-          name={`code`}
-          placeholder={`Code`}
+          name={'code'}
+          placeholder={'Code'}
           control={control}
           rules={{required: 'Verification Code is required!'}}
         />
         <CustomInput
-          name={`password`}
+          name={'password'}
           placeholder="Create New Password"
           control={control}
           rules={{
@@ -43,7 +43,7 @@ const NewPasswordScreen = () => {
           secureTextEntry
         />
         <CustomInput
-          name={`cpassword`}
+          name={'cpassword'}
           placeholder="Confirm New Password"
           control={control}
           rules={{
@@ -55,7 +55,7 @@ const NewPasswordScreen = () => {
         <CustomButton text={'Reset'} onPress={handleSubmit(onResetPressed)} />
 
         <CustomButton
-          text={`Back To Sign in`}
+          text={'Back To Sign in'}
           onPress={onSigninPressed}
           type="SECONDARY"
         />

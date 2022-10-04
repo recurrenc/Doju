@@ -1,5 +1,5 @@
 import {View, Text, StyleSheet, ScrollView} from 'react-native';
-import React, {useState} from 'react';
+import React from 'react';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 import {useNavigation} from '@react-navigation/native';
@@ -9,17 +9,12 @@ const PHONE_REGEX = /^[6-9]\d{9}$/;
 const IMEI_REGEX = /^[0-9]{15}(,[0-9]{15})*$/;
 
 const AddRecord = () => {
-  const {control, handleSubmit, watch} = useForm();
-  const pwd = watch('password');
+  const {control, handleSubmit} = useForm();
 
   const navigation = useNavigation();
 
   const onRegisterPressed = () => {
     navigation.navigate('ConfirmEmail');
-  };
-
-  const onSigninPressed = () => {
-    navigation.navigate('SignIn');
   };
 
   return (

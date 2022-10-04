@@ -1,5 +1,5 @@
 import {View, Text, StyleSheet, ScrollView} from 'react-native';
-import React, {useState} from 'react';
+import React from 'react';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 import SocialAuthentication from '../../components/SocialAuthentication';
@@ -103,7 +103,7 @@ const SignupScreen = () => {
         <SocialAuthentication />
 
         <CustomButton
-          text={`Already have an Account? Sign In`}
+          text={'Already have an Account? Sign In'}
           onPress={onSigninPressed}
           type="TERTIARY"
         />

@@ -1,7 +1,5 @@
-import {View, Text} from 'react-native';
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {NavigationContainer} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Entypo';
 import RecentAdded from './RecentAdded';
 import AllRecord from './AllRecord';

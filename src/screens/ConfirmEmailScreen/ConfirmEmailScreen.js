@@ -1,5 +1,5 @@
 import {View, Text, StyleSheet, ScrollView} from 'react-native';
-import React, {useState} from 'react';
+import React from 'react';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 import {useNavigation} from '@react-navigation/native';
@@ -27,7 +27,7 @@ const ConfirmEmailScreen = () => {
       <View style={styles.root}>
         <Text style={styles.title}>Verify Your Email</Text>
         <CustomInput
-          name={`code`}
+          name={'code'}
           placeholder="Enter Your Confirmation Code"
           control={control}
           rules={{
@@ -38,12 +38,12 @@ const ConfirmEmailScreen = () => {
         <CustomButton text={'Verify'} onPress={handleSubmit(onVerifyPressed)} />
 
         <CustomButton
-          text={`Resend Code`}
+          text={'Resend Code'}
           onPress={onResendCode}
           type="SECONDARY"
         />
         <CustomButton
-          text={`Back To Sign In`}
+          text={'Back To Sign In'}
           onPress={onSigninPressed}
           type="TERTIARY"
         />

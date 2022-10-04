@@ -5,22 +5,17 @@ import {
   useWindowDimensions,
   ScrollView,
 } from 'react-native';
-import React, {useState} from 'react';
+import React from 'react';
 import Logo from '../../../assets/images/logo.png';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
-import SocialAuthentication from '../../components/SocialAuthentication';
 import {useNavigation} from '@react-navigation/native';
 import {useForm} from 'react-hook-form';
 
 const SigninScreen = () => {
   const {height} = useWindowDimensions();
   const navigation = useNavigation();
-  const {
-    control,
-    handleSubmit,
-    formState: {errors},
-  } = useForm();
+  const {control, handleSubmit} = useForm();
 
   const onSignInPress = data => {
     console.log(data);
@@ -30,9 +25,9 @@ const SigninScreen = () => {
     navigation.navigate('ForgotPassword');
   };
 
-  const onSignupPressed = () => {
-    navigation.navigate('SignUp');
-  };
+  // const onSignupPressed = () => {
+  //   navigation.navigate('SignUp');
+  // };
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
@@ -44,13 +39,13 @@ const SigninScreen = () => {
         />
         <CustomInput
           placeholder="Username"
-          name={`username`}
+          name="username"
           control={control}
           rules={{required: 'Username is required!'}}
         />
         <CustomInput
           placeholder="Password"
-          name={`password`}
+          name="password"
           control={control}
           secureTextEntry
           rules={{
@@ -67,12 +62,12 @@ const SigninScreen = () => {
           onPress={onForgotPasswordPressed}
           type="TERTIARY"
         />
-        <SocialAuthentication />
+        {/* <SocialAuthentication />
         <CustomButton
           text={`Don't have an Account? Create One`}
           onPress={onSignupPressed}
           type="TERTIARY"
-        />
+        /> */}
       </View>
     </ScrollView>
   );

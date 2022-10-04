@@ -7,11 +7,10 @@
  */
 
 import React from 'react';
-import {SafeAreaView, StyleSheet, Text, useColorScheme} from 'react-native';
+import {SafeAreaView, StyleSheet, useColorScheme} from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import Navigation from './src/navigation';
-import HomeScreen from './src/screens/HomeScreen';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';

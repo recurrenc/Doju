@@ -1,5 +1,5 @@
 import {View, Text, StyleSheet, ScrollView} from 'react-native';
-import React, {useState} from 'react';
+import React from 'react';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 import {useNavigation} from '@react-navigation/native';
@@ -24,7 +24,7 @@ const ForgotPasswordScreen = () => {
       <View style={styles.root}>
         <Text style={styles.title}>Reset Your Password</Text>
         <CustomInput
-          name={`username`}
+          name={'username'}
           placeholder="Username"
           control={control}
           rules={{
@@ -38,7 +38,7 @@ const ForgotPasswordScreen = () => {
         />
 
         <CustomButton
-          text={`Back To Sign in`}
+          text={'Back To Sign in'}
           onPress={onSigninPressed}
           type="SECONDARY"
         />
