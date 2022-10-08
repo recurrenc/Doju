@@ -10,6 +10,8 @@ import React from 'react';
 import {SafeAreaView, StyleSheet, useColorScheme} from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {Provider} from 'react-redux';
+import {store} from './redux/store';
 import Navigation from './src/navigation';
 
 const App = () => {
@@ -34,4 +36,10 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default () => {
+  return (
+    <Provider store={store}>
+      <App />
+    </Provider>
+  );
+};
