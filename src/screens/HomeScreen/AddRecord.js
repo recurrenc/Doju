@@ -2,19 +2,32 @@ import {View, Text, StyleSheet, ScrollView} from 'react-native';
 import React from 'react';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
-import {useNavigation} from '@react-navigation/native';
 import {useForm} from 'react-hook-form';
+import {useCreateRecordMutation} from '../../../services/recordApi';
 
 const PHONE_REGEX = /^[6-9]\d{9}$/;
 const IMEI_REGEX = /^[0-9]{15}(,[0-9]{15})*$/;
 
 const AddRecord = () => {
-  const {control, handleSubmit} = useForm();
+  const {control, handleSubmit, reset} = useForm({
+    defaultValues: {
+      name: '',
+      fatherName: '',
+      address: '',
+      mobile: '',
+      imei: '',
+      fir: '',
+      description: '',
+      chassNumber: '',
+      engilneNumber: '',
+    },
+  });
+  const [createRecord] = useCreateRecordMutation();
 
-  const navigation = useNavigation();
-
-  const onRegisterPressed = () => {
-    navigation.navigate('ConfirmEmail');
+  const onRegisterPressed = async data => {
+    console.log(data);
+    await createRecord(data);
+    reset();
   };
 
   return (
@@ -82,7 +95,7 @@ const AddRecord = () => {
           placeholder="IMEI Number"
           control={control}
           rules={{
-            required: 'IMEI Number is required!',
+            // required: 'IMEI Number is required!',
             pattern: {
               value: IMEI_REGEX,
               message: 'IMEI Number is invalid!',
@@ -93,33 +106,33 @@ const AddRecord = () => {
           name="fir"
           placeholder="FIR / Section"
           control={control}
-          rules={{
-            required: 'FIR Section is required!',
-          }}
+          // rules={{
+          //   required: 'FIR Section is required!',
+          // }}
         />
         <CustomInput
           name="description"
           placeholder="Description"
           control={control}
-          rules={{
-            required: 'Description is required!',
-          }}
+          // rules={{
+          //   required: 'Description is required!',
+          // }}
         />
         <CustomInput
-          name="chass"
+          name="chassNumber"
           placeholder="Chass Number"
           control={control}
-          rules={{
-            required: 'Chass Number is required!',
-          }}
+          // rules={{
+          //   required: 'Chass Number is required!',
+          // }}
         />
         <CustomInput
-          name="engilne"
+          name="engilneNumber"
           placeholder="Engilne Number"
           control={control}
-          rules={{
-            required: 'Engilne Number is required!',
-          }}
+          // rules={{
+          //   required: 'Engilne Number is required!',
+          // }}
         />
         <CustomButton
           text={'Register'}

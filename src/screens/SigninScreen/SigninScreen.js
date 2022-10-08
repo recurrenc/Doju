@@ -4,6 +4,7 @@ import {
   StyleSheet,
   useWindowDimensions,
   ScrollView,
+  NativeModules,
 } from 'react-native';
 import React from 'react';
 import Logo from '../../../assets/images/logo.png';
@@ -11,15 +12,27 @@ import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 import {useNavigation} from '@react-navigation/native';
 import {useForm} from 'react-hook-form';
+import {storeSession} from '../../../services/AsyncStorage';
+import {useLoginUserMutation} from '../../../services/userAuthApi';
+const EMAIL_REGEX =
+  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
 const SigninScreen = () => {
   const {height} = useWindowDimensions();
   const navigation = useNavigation();
   const {control, handleSubmit} = useForm();
+  const [loginUser] = useLoginUserMutation();
 
-  const onSignInPress = data => {
-    console.log(data);
-    navigation.navigate('Home');
+  const onSignInPress = async data => {
+    console.log('Data ', data);
+    const user = await loginUser(data);
+    console.log(user);
+    if (user.data.status === 'success') {
+      await storeSession(user.data.token);
+      NativeModules.DevSettings.reload();
+    } else {
+      console.log(user.data.message);
+    }
   };
   const onForgotPasswordPressed = () => {
     navigation.navigate('ForgotPassword');
@@ -38,10 +51,16 @@ const SigninScreen = () => {
           resizeMode="contain"
         />
         <CustomInput
-          placeholder="Username"
-          name="username"
+          placeholder="email"
+          name="email"
           control={control}
-          rules={{required: 'Username is required!'}}
+          rules={{
+            required: 'Username is required!',
+            pattern: {
+              value: EMAIL_REGEX,
+              message: 'Email is invalid!',
+            },
+          }}
         />
         <CustomInput
           placeholder="Password"

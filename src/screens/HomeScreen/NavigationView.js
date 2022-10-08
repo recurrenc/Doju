@@ -1,9 +1,18 @@
-import {View, Text, StyleSheet, Image} from 'react-native';
+import {View, Text, StyleSheet, Image, NativeModules} from 'react-native';
 import React from 'react';
 import IC from '../../../assets/images/logo.png';
 import CustomButton from '../../components/CustomButton';
+import {removeSession} from '../../../services/AsyncStorage';
 
 const NavigationView = () => {
+  const handleLogout = async () => {
+    try {
+      await removeSession();
+      NativeModules.DevSettings.reload();
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <View style={[styles.container]}>
       <View style={styles.headerContainer}>
@@ -15,7 +24,7 @@ const NavigationView = () => {
       <View style={styles.buttonView}>
         <CustomButton text={'Share'} />
         <CustomButton text={'Rate Us'} />
-        <CustomButton text={'-> Log out'} />
+        <CustomButton text={'-> Log out'} onPress={handleLogout} />
       </View>
     </View>
   );
